@@ -1,9 +1,14 @@
-// Script
+// Test each function
 loopingATriangle();
 fizzBuzz();
 console.log(chessboard(8));
 
 
+///////////////////////////////////////////////////////////////////
+
+/**
+ * Prints a triangle with a base and height of 7
+ */
 function loopingATriangle() {
   startExercise('looping a triangle');
   let row = '';
@@ -13,6 +18,11 @@ function loopingATriangle() {
   }
 }
 
+/**
+ * From 1-100: Prints 'fizz' if n is divisible by 3,
+ * prints 'buzz' if it is divisible by 5,  
+ * and prints 'fizzbuzz' if it is divisible by both 3 and 5.
+ */
 function fizzBuzz() {
   startExercise('fizzbuzz');
   for (let i = 1; i <= 100; i++) {
@@ -23,6 +33,12 @@ function fizzBuzz() {
   }
 }
 
+/**
+ * Generates a square chessboard and
+ * returns it as a string.
+ * @param {Number} size 
+ * @return {String} the chessboard as a string
+ */
 function chessboard(size) {
   startExercise('chessboard');
   let boardStr = '';        // output string
