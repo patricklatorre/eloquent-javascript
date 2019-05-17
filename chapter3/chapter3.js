@@ -18,6 +18,7 @@ console.log(countBs('BananaboatBoy'));
 console.log(countChar('BananaboatBoy', 'B'));
 console.log(countChar('BananaboatBoy', 'b'));
 
+/////////////////////////////////////////////////////////////////////
 
 /**
  * Finds the minimum between two numbers
