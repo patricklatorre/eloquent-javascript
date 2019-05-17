@@ -142,6 +142,10 @@ function nth(list, n) {
   return undefined;
 }
 
+function deepEqual(obj1, obj2) {
+  // TODO: not done
+}
+
 /**
  * Divider between exercises
  */
