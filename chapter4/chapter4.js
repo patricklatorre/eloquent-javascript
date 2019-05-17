@@ -2,8 +2,12 @@
 startExercise('sum of range');
 console.log(sum(range(1, 5)));
 
-startExercise('reversing an array');
+startExercise('creating a reverse array');
 reverseArray(range(1, 5));
+
+startExercise('reversing an array in place');
+reverseArrayInPlace(range(1, 8));
+
 
 startExercise('array to list');
 let rangeList = arrayToList(range(1, 5));
@@ -14,6 +18,8 @@ let rangeArr = listToArray(rangeList);
 
 startExercise('nth of list')
 console.log(nth(rangeList, 3));
+
+
 
 //////////////////////////////////////////////////////////////////
 
@@ -62,10 +68,10 @@ function range(start, end, step) {
  * @return {Array} the reversed array
  */
 function reverseArray(arr) {
-  console.log('Normal: ' + arr);
+  console.log('Normal: ', arr);
   let reversedArr = [];
   while (arr.length > 0) reversedArr.push(arr.pop());
-  console.log('Reversed: ' + reversedArr);
+  console.log('Reversed: ', reversedArr);
 }
 
 /**
@@ -74,7 +80,15 @@ function reverseArray(arr) {
  * @return {Array} the reversed array 
  */
 function reverseArrayInPlace(arr) {
-  // TODO: done last
+  console.log('BEFORE: ', arr);
+  const lastIndex = arr.length - 1;
+  const midarray = Math.floor(arr.length / 2);
+  for (let i = 0; i < midarray; i++) {
+    let first = arr[i];
+    arr[i] = arr[lastIndex - i];
+    arr[lastIndex - i] = first;
+  }
+  console.log('AFTER: ', arr);
 }
 
 /**
