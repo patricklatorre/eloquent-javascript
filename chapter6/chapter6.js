@@ -36,7 +36,7 @@ class MatrixIterator {
   constructor(matrix) {
     this.x = 0;
     this.y = 0;
-    this.matrix = 0;
+    this.matrix = matrix;
   }
 
   next() {
@@ -52,7 +52,7 @@ class MatrixIterator {
     this.x++;
 
     if (this.x == this.matrix.width)
-      return { value, done: false };
+      return { element, done: false };
   }
 }
 
@@ -91,7 +91,57 @@ class Vec {
   }
 }
 
+class Group {
+  constructor() {
+    this.data = [];
+    Group.prototype[Symbol.iterator] = function () {
+      return new GroupIterator(this);
+    };
+  }
 
+  static from(iterable) {
+    let g = new Group();
+    for (let e of iterable) g.add(e);
+    return g;
+  }
+
+  add(element) {
+    if (this.data.includes(element)) return false;
+    this.data.push(element);
+    return true;
+  }
+
+  delete(element) {
+    let i = this.data.indexOf(element);
+    if (i === -1) return false;
+    this.data = this.data.filter((value) => value != element);
+    return true;
+  }
+
+  has(element) {
+    return this.data.includes(element);
+  }
+}
+
+class GroupIterator {
+  constructor(group) {
+    this.i = 0;
+    this.group = group;
+  }
+
+  next() {
+    if (this.i === this.group.data.length)
+      return { done: true };
+
+    let element = {
+      i: this.i,
+      value: this.group.data[this.i],
+    };
+
+    this.i++;
+    return { element, done: false }
+  }
+}
 ////////////////////////////////////////////////////////////////
 
 startExercise('vectors');
@@ -101,9 +151,16 @@ console.log(v1);
 console.log(v2);
 console.log('=', v1.plus(v2));
 
-
-
-
+startExercise('groups');
+let g = new Group();
+g.add('wew');
+g.add('black panther');
+g.add('wtf');
+console.log(g);
+g.delete('santa');
+for (let value of Group.from(['a', 'b', 'c'])) {
+  console.log(value);
+}
 ////////////////////////////////////////////////////////////////
 
 /**
