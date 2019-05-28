@@ -153,14 +153,23 @@ console.log('=', v1.plus(v2));
 
 startExercise('groups');
 let g = new Group();
-g.add('wew');
-g.add('black panther');
-g.add('wtf');
+g.add('item1');
+g.add('item2');
+g.add('item3');
 console.log(g);
-g.delete('santa');
-for (let value of Group.from(['a', 'b', 'c'])) {
+g.delete('item2');
+for (let value of Group.from(['a', 'b', 'c']))
   console.log(value);
-}
+
+
+startExercise('borrowing a method');
+let map = { one: true, two: true, hasOwnProperty: true };
+console.log(
+  Object.getPrototypeOf(map).hasOwnProperty.call(map, 'hasOwnProperty')
+);
+
+
+
 ////////////////////////////////////////////////////////////////
 
 /**
