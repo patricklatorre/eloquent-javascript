@@ -146,6 +146,7 @@ class GroupIterator {
     return { value: element, done: false }
   }
 }
+
 ////////////////////////////////////////////////////////////////
 
 startExercise('vectors');
@@ -161,10 +162,18 @@ g.add('item1');
 g.add('item2');
 g.add('item3');
 console.log(g);
-g.delete('santa');
-for (let element of Group.from(['a', 'b', 'c'])) {
-  console.log(element);
-}
+
+g.delete('item2');
+for (let value of Group.from(['a', 'b', 'c']))
+  console.log(value);
+
+
+startExercise('borrowing a method');
+let map = { one: true, two: true, hasOwnProperty: true };
+console.log(
+  Object.getPrototypeOf(map).hasOwnProperty.call(map, 'hasOwnProperty')
+);
+
 ////////////////////////////////////////////////////////////////
 
 /**
