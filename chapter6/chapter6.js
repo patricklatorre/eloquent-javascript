@@ -130,16 +130,20 @@ class GroupIterator {
   }
 
   next() {
-    if (this.i === this.group.data.length)
+    if (this.i == this.group.data.length) {
+      console.log(`Reached ${this.i}`);
       return { done: true };
+    }
 
     let element = {
-      i: this.i,
+      index: this.i,
       value: this.group.data[this.i],
     };
 
+    console.log(`Saw element: ${element.value}`);
+
     this.i++;
-    return { element, done: false }
+    return { value: element, done: false }
   }
 }
 ////////////////////////////////////////////////////////////////
@@ -158,8 +162,8 @@ g.add('black panther');
 g.add('wtf');
 console.log(g);
 g.delete('santa');
-for (let value of Group.from(['a', 'b', 'c'])) {
-  console.log(value);
+for (let element of Group.from(['a', 'b', 'c'])) {
+  console.log(element);
 }
 ////////////////////////////////////////////////////////////////
 
