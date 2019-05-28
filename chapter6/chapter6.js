@@ -130,16 +130,20 @@ class GroupIterator {
   }
 
   next() {
-    if (this.i === this.group.data.length)
+    if (this.i == this.group.data.length) {
+      console.log(`Reached ${this.i}`);
       return { done: true };
+    }
 
     let element = {
-      i: this.i,
+      index: this.i,
       value: this.group.data[this.i],
     };
 
+    console.log(`Saw element: ${element.value}`);
+
     this.i++;
-    return { element, done: false }
+    return { value: element, done: false }
   }
 }
 ////////////////////////////////////////////////////////////////
@@ -157,19 +161,10 @@ g.add('item1');
 g.add('item2');
 g.add('item3');
 console.log(g);
-g.delete('item2');
-for (let value of Group.from(['a', 'b', 'c']))
-  console.log(value);
-
-
-startExercise('borrowing a method');
-let map = { one: true, two: true, hasOwnProperty: true };
-console.log(
-  Object.getPrototypeOf(map).hasOwnProperty.call(map, 'hasOwnProperty')
-);
-
-
-
+g.delete('santa');
+for (let element of Group.from(['a', 'b', 'c'])) {
+  console.log(element);
+}
 ////////////////////////////////////////////////////////////////
 
 /**
